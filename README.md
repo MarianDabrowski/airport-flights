@@ -5,7 +5,7 @@ My implementation of airport flight simulator created for WWW Applications cours
 Django web-dev project
 Creating a simulator to book flights with all additional API's.
 
-How to start
+How to start<br>
 <i>migrate the db</i><br>
 python manage.py migrate
 <i>fill the db</i><br>
