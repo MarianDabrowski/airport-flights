@@ -6,11 +6,11 @@ Django web-dev project
 Creating a simulator to book flights with all additional API's.
 
 How to start
-<i>migrate the db</i>
+<i>migrate the db</i><br>
 python manage.py migrate
-<i>fill the db</i>
+<i>fill the db</i><br>
 python manage.py shell < fill-db-randomly.py
-<i>run the server</i>
+<i>run the server</i><br>
 python manage.py runserver
 # Screenshots
 ![](https://i.imgur.com/UhyQniv.png)
