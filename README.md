@@ -7,11 +7,11 @@ Creating a simulator to book flights with all additional API's.
 
 How to start<br>
 <i>migrate the db</i><br>
-python manage.py migrate
+python manage.py migrate<br>
 <i>fill the db</i><br>
-python manage.py shell < fill-db-randomly.py
+python manage.py shell < fill-db-randomly.py<br>
 <i>run the server</i><br>
-python manage.py runserver
+python manage.py runserver<br>
 # Screenshots
 ![](https://i.imgur.com/UhyQniv.png)
 ![](https://i.imgur.com/aCXucu8.png)
