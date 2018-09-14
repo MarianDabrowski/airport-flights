@@ -1,0 +1,69 @@
+{% extends 'airport/base.html' %}
+
+{% block subtitle %}Flight{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-6">
+                <header class="h2">Flight details</header>
+                {% for detail in details %}
+                <div class="row mt-2">
+                    <div class="col-4">{{ detail.name }}</div>
+                    <div class="col-8">{{ detail.value }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <header class="h2">Passengers</header>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Number of tickets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for passenger in passengers %}
+                            <tr>
+                                <td>{{ passenger.passenger__name }}</td>
+                                <td>{{ passenger.passenger__surname }}</td>
+                                <td>{{ passenger.tickets }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="row mt-4">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <header class="h2">Buy ticket for passenger</header>
+                <form action="{% url 'buy' flightId %}" method="POST" class="mt-4">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="name" class="col-form-label col-sm-2">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name"
+                                       name="name" placeholder="Name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="surname" class="col-form-label col-sm-2">Surname</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="surname"
+                                       name="surname" placeholder="Surname" />
+                            </div>
+                        </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" id="buy_ticket_button">Buy ticket</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

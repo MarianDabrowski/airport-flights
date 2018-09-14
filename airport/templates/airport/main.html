@@ -1,0 +1,34 @@
+{% extends 'airport/base.html' %}
+
+{% block subtitle %}Flights List{% endblock %}
+
+{% block content %}
+    <form class="form-group row mt-2 mb-2 ml-auto mr-auto" method="GET" action="{% url 'main' %}">
+        {% csrf_token %}
+        <label for="dateInput" class="col-form-label col-2"><i>Enter the date</i></label>
+        <div class="col-8">
+            <input type="date" id="dateInput" name="search" class="form-control text-center" />
+        </div>
+        <button class="btn btn-dark" type="submit" href="{% url 'main' %}">Search</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Departure</th>
+                <th scope="col">Arrival</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+                <tr onclick="window.location.assign('{% url 'flight' flight.pk %}');">
+                    <td>{{ flight.departureTime }}</td>
+                    <td>{{ flight.arrivalTime }}</td>
+                    <td>{{ flight.departureAirport }}</td>
+                    <td>{{ flight.arrivalAirport }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
